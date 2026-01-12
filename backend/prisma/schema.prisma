@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Plan {
+  id        String   @id @default(uuid())
+  name      String   
+  limits    String   
+  price     Float
+  companies Company[]
+}
+
+model Company {
+  id        String   @id @default(uuid())
+  name      String
+  cnpj      String   @unique
+  plan      Plan     @relation(fields: [planId], references: [id])
+  planId    String
+  users     User[]
+  settings  String?  
+  createdAt DateTime @default(now())
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("USER")
+  company   Company  @relation(fields: [companyId], references: [id])
+  companyId String
+  createdAt DateTime @default(now())
+}
+
+model Lead {
+  id             String   @id @default(uuid())
+  title          String
+  description    String
+  sourceUrl      String
+  region         String
+  category       String   
+  type           String   
+  estimatedValue Float?
+  urgencyScore   Int      @default(0) 
+  summary        String?
+  fullContent    String?
+  status         String   @default("NOVO") 
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}

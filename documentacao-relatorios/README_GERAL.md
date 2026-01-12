@@ -12,3 +12,8 @@ Este diretório contém toda a documentação estratégica do projeto.
 7. **Roadmap.md**: Planejamento de fases (MVP -> Expansão).
 
 *Nota: Os arquivos individuais detalhados foram consolidados neste pacote de recuperação.*
+
+## Status do Projeto
+- **Autenticação**: Implementada (Login/Registro e Proteção de Rotas).
+- **Backend**: API Express configurada com Prisma (SQLite).
+- **Frontend**: Next.js com Dashboard base.

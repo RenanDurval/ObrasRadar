@@ -12,6 +12,9 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
+
 // Basic health check
 app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', message: 'ObraRadar API is running' });

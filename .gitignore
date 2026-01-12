@@ -7,3 +7,8 @@ backend/node_modules
 frontend/node_modules
 backend/prisma/dev.db
 backend/prisma/dev.db-journal
+*.log
+.env*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
